@@ -36,6 +36,7 @@ public class MadLib
 
 		try
 		{
+			String reStory = "";
 			//Read the different parts of the story and concatenate the resulting
 			//story using the symbols to tell you the parts of speech
 
@@ -54,22 +55,24 @@ public class MadLib
 					if( reader.equals("#") )
 						{
 							
-							reader.add(getRandomNoun());
+							reStory += (getRandomNoun());
 						}
 
 					else if( reader.equals("@") )
 						{
 							
-							reader.add(getRandomVerb());
+							reStory += (getRandomVerb());
 						}
 
 					else if( reader.equals("&") )
 						{
 							
-							reader.add(getRandomAdjective());
+							reStory += (getRandomAdjective());
 						}
 					else
+						reStory += reader;
 						reader.next();
+
 				}
 
 				reader.close();
@@ -144,27 +147,25 @@ public class MadLib
 	public String getRandomVerb()
 	{
 		Random rand = new Random();
-		int y = rand.nextInt(14) + 1;
-		return "" + verbs<y>;
+		return "" + verbs.get(rand.nextInt(verbs.size()));
 	}
 
 	public String getRandomNoun()
 	{	
 		Random rand = new Random();
-		int y = rand.nextInt(20) + 1;
-		return "" + nouns<y>;
+		return "" + nouns.get(rand.nextInt(nouns.size()));
 	}
 
 	public String getRandomAdjective()
 	{
 		Random rand = new Random();
-		int y = rand.nextInt(18) + 1;
-		return "" + adjectives<y>;
+		
+		return "" + adjectives.get(rand.nextInt(adjectives.size()));
 		
 	}
 
 	public String toString()
 	{
-		return "";
+		return "" + reStory;
 	}
 }
